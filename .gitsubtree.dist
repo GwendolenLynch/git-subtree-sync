@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Base URL of the upstream subtree repositoies
+REMOTE_BASE_URL=git@github.com:your-org-name
+
+# Full path to the local primary monolithic repo
+MONOLITH_REPO_ROOT=/path/to/monolithic/repo
+
+# Full *base* path that will contain the subtree repositories
+SUBTREE_REPO_ROOT=/path/to/subtrees
+
+# Bash 4+ associative array of:
+#
+# Key: Subtree's project name. Will be used for the name of the subtree's
+#      directory under SUBTREE_REPO_ROOT and appended to REMOTE_BASE_URL
+#
+# Value: The relative path of the subtree in the monolithic repository
+#
+PREFIX_DIRS=(
+    ["project-a"]="src/ProjectA/"
+    ["project-b"]="src/ProjectB/"
+    ["project-c"]="src/ProjectC/"
+)
