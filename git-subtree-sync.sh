@@ -229,10 +229,10 @@ function update_tags () {
             exit 1
         fi
 
+        MATCHING_IDS=$(find ${GIT_DIR}/subtree-cache/ -name ${OLD_TAG_ID} | xargs cat | sort | uniq)
+
         pushd "${SUBTREE_REPO_ROOT}/${_SUBTREE_DIR_NAME}" &> /dev/null
         pushd "$(git rev-parse --git-dir)" &> /dev/null
-
-        MATCHING_IDS=$(find ${GIT_DIR}/subtree-cache/ -name ${OLD_TAG_ID} | xargs cat | sort | uniq)
 
         for MATCHING_ID in ${MATCHING_IDS} ; do
             git rev-list "${MATCHING_ID}" &> /dev/null
